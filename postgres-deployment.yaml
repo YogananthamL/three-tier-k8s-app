@@ -34,4 +34,24 @@ spec:
               value: todo
 
             - name: POSTGRES_PASSWORD
-              value: todo
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
+
+          volumeMounts:
+            - name: secrets-store
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+
+      volumes:
+        - name: secrets-store
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+
+            volumeAttributes:
+              secretProviderClass: "todo-keyvault"
+
+            nodePublishSecretRef:
+              name: secrets-store-creds

@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-change-me")
 DEBUG = os.getenv("DEBUG", "True").strip().lower() in {"1", "true", "yes", "on"}
-ALLOWED_HOSTS = ["localhost", "4.247.29.20", "0.0.0.0","20.44.49.4","django-service","127.0.0.1",]
+ALLOWED_HOSTS = ["localhost", "57.159.27.25", "0.0.0.0","20.44.49.4","django-service","127.0.0.1",]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -105,5 +105,5 @@ CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "http://20.44.49.4:30000"
+    "http://57.159.27.25:30000"
 ]

@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: django-app
-          image: todo-app:latest
+          image: backend:latest
           imagePullPolicy: Never
 
           ports:
@@ -35,7 +35,10 @@ spec:
               value: todo
 
             - name: DB_PASSWORD
-              value: todo
+              valueFrom:
+                secretKeyRef:
+                  name: db-secret
+                  key: POSTGRES_PASSWORD
 
             - name: DB_HOST
               value: postgres-db
